@@ -1,0 +1,36 @@
+일단 리스트에 담아 놓는 것까지 진행했으나, 순서가 뒤죽박죽 담기네요...초안으로 올려놓습니다.
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from bs4 import BeautifulSoup
+import time
+
+location='https://www.imdb.com/title/tt6751668/reviews/?ref_=tt_ql_urv'
+service= Service(executable_path="./chromedriver")
+driver= webdriver.Chrome(service=service)
+driver.get(location)
+
+for k in range(99999):
+    try:
+        driver.find_element(by=By.ID, value="load-more-trigger").click()
+        time.sleep(3)
+    except Exception as ex:
+        print('더이상 "Load More" 없음', ex)
+        break;
+        
+soup= BeautifulSoup(driver.page_source, 'html.parser')
+
+rev_list=[]
+
+box_list= soup.select("div.lister > div.lister-list > div")
+for box in box_list:
+    try:
+        rating= box.select_one('span.rating-other-user-rating > span').text
+    except:
+        rating= "no rating"
+    title= box.select_one('div.review-container > div.lister-item-content > a').text
+    review= box.select_one('div.review-container > div.lister-item-content > div.content > div').text
+    review_date= box.select_one('div.review-container > div.lister-item-content > div.display-name-date > span.review-date').text
+    rev_list.append({rating, title, review, review_date})
