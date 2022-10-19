@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import math
 
 #리뷰추출
 def get_review_viewer(box):
@@ -29,13 +30,15 @@ def get_all_review_count(url) :
 #####실행코드
 
 #전체 리뷰 추출 > 영화코드 & 전체 리뷰 수 입력
+#범죄도시 코드 192608, 기생충 코드 161967
 movie_code = 
-all_review_count = #이것도 가져오는 코드는 짰지만 계속 None으로 반환이 되네요..
+url = f'https://movie.naver.com/movie/bi/mi/pointWriteFormList.naver?code={movie_code}&type=after&isActualPointWriteExecute=false&isMileageSubscriptionAlready=false&isMileageSubscriptionReject=false&page='+str(1)
+all_review_count = int(get_all_review_count(url).replace(',',''))
 
-last_num = round(all_review_count/100)+1
+last_num = math.ceil(all_review_count/10)+1
 review_list=[]
 for i in range(1, last_num) :
-    review_list.extend(get_page_reviews(f'https://movie.naver.com/movie/bi/mi/pointWriteFormList.naver?code={movie_code}&type=after&isActualPointWriteExecute=false&isMileageSubscriptionAlready=false&isMileageSubscriptionReject=false&page='+str(i)))
+    review_list.extend(get_page_reviews(url+str(i)))
 
 
 #데이터 프레임 저장 > 파일명 입력
