@@ -32,8 +32,8 @@ def get_all_review_count(url) :
 #전체 리뷰 추출 > 영화코드 & 전체 리뷰 수 입력
 #범죄도시 코드 192608, 기생충 코드 161967
 movie_code = 
-url = f'https://movie.naver.com/movie/bi/mi/pointWriteFormList.naver?code={movie_code}&type=after&isActualPointWriteExecute=false&isMileageSubscriptionAlready=false&isMileageSubscriptionReject=false&page='+str(1)
-all_review_count = int(get_all_review_count(url).replace(',',''))
+url = f'https://movie.naver.com/movie/bi/mi/pointWriteFormList.naver?code={movie_code}&type=after&isActualPointWriteExecute=false&isMileageSubscriptionAlready=false&isMileageSubscriptionReject=false&page='
+all_review_count = int(get_all_review_count(url+str(1)).replace(',',''))
 
 last_num = math.ceil(all_review_count/10)+1
 review_list=[]
