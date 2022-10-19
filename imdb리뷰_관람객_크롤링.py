@@ -9,7 +9,6 @@ def get_rev_list(driver):
     ratings = []
     titles = []
     reviews = []
-    review_dates = []
     box_list = soup.select("div.lister > div.lister-list > div")
     for box in box_list:
         try:
@@ -21,9 +20,7 @@ def get_rev_list(driver):
         titles.append(title)
         review= box.select_one('div.lister-item-content > div.content > div').text
         reviews.append(review)
-        review_date= box.select_one('div.lister-item-content > div.display-name-date > span.review-date').text
-        review_dates.append(review_date)
-    return {'ratings':ratings, 'titles':titles, 'reviews':reviews, 'review_dates':review_dates}
+    return {'ratings':ratings, 'titles':titles, 'reviews':reviews}
 
 def selenium_service(url, TIMEOUT):
     try: 
@@ -55,7 +52,7 @@ def selenium_service(url, TIMEOUT):
 
 
 ### 실행코드 ###
-# 영화코드 입력
+# 영화코드 입력 : 기생충  'tt6751668', 범죄도시 'tt15838850'
 movie_code = ''
 url = f'https://www.imdb.com/title/{movie_code}/reviews?ref_=tturv_ql_3'
 TIMEOUT=3
