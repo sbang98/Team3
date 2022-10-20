@@ -1,0 +1,48 @@
+import pandas as pd
+import numpy as np
+
+df=pd.read_csv('네이버관객.csv')
+new_df= df.head(10000)
+
+new_df['reviews']=new_df['reviews'].astype('str')
+new_df['ratings']=new_df['ratings'].astype('int')
+
+mean_rt=round(df['ratings'].mean(),2)
+
+print('관객 평균 별점:', round(df['ratings'].mean(),2))
+print("\n")
+
+print('관객 별점 분포',new_df['ratings'].value_counts(ascending=False), sep='\n')
+print('관객 별점 분포',new_df['ratings'].value_counts(normalize=True), sep='\n')
+print("\n")
+
+print('네이버관객 평균 리뷰길이:',np.mean(new_df['reviews'].apply(len)))
+print('네이버관객 최대 리뷰길이:',np.max(new_df['reviews'].apply(len)))
+print('네이버관객 최소 리뷰길이:',np.min(new_df['reviews'].apply(len)))
+print('네이버관객 중앙값 리뷰길이:',np.median(new_df['reviews'].apply(len)))
+print('네이버관객 표준편차 리뷰길이:',np.std(new_df['reviews'].apply(len)))
+print("\n")
+
+rt_sum=0
+rt_cnt=0
+rt_sum1=0
+rt_cnt1=0
+rt_sum2=0
+rt_cnt2=0
+for rev in new_df.reviews:
+    if '봉준호' in rev or '감독' in rev:
+        rt= new_df[new_df.reviews == rev]['ratings'].mean()
+        rt_sum += rt
+        rt_cnt += 1
+    elif '연기' in rev or '배우' in rev or '송강호' in rev:
+        rt= new_df[new_df.reviews == rev]['ratings'].mean()
+        rt_sum1 += rt
+        rt_cnt1 += 1
+    elif '스토리' in rev or '내용' in rev or '전개' in rev:
+        rt= new_df[new_df.reviews == rev]['ratings'].mean()
+        rt_sum2 += rt
+        rt_cnt2 += 1
+        
+print('감독 관련:',round(rt_sum/rt_cnt,2))
+print('배우 또는 연기 관련:',round(rt_sum1/rt_cnt1,2))
+print('내용 관련:',round(rt_sum2/rt_cnt2,2))
