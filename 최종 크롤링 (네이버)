@@ -1,0 +1,73 @@
+#네이버 크롤링 코드
+#네이버 관객
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+#리뷰추출
+def get_review_viewer(box):
+    rating = box.select_one('div em').text
+    try:
+        review = box.select_one('div p span a')['data-src']
+    except:
+        review = box.select_one('div p').text
+    return {"ratings": rating, "reviews": review.replace('\n관람객','').replace('\t', '').replace('\n', '').replace('\r', '')}
+
+def get_page_reviews(url) :
+    page = requests.get(url)
+    soup = BeautifulSoup(page.text, 'html.parser')
+    elements = soup.select('div.score_result ul li')
+    return  [get_review_viewer(element)   for element in elements]
+
+#####실행코드
+
+#전체 리뷰 추출 > 영화코드
+movie_code = 161967
+
+review_list=[]
+for i in range(1, 3685):
+    try:
+        review_list.extend(get_page_reviews(f'https://movie.naver.com/movie/bi/mi/pointWriteFormList.naver?code={movie_code}&type=after&isActualPointWriteExecute=false&isMileageSubscriptionAlready=false&isMileageSubscriptionReject=false&page='+str(i)))
+    except:
+        break;
+    
+title='네이버관객.csv'
+df = pd.DataFrame(review_list)
+df.to_csv(title)
+
+#네이버 평론가
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+#리뷰추출
+def get_review_pro(box, route):
+    point = box.select_one('div em').text
+    if route == 'div.score_result ul li':
+        review = box.select_one('div p').text
+    else:
+        review = box.select_one('p.tx_report').text
+    return { "point": point, "review": review}
+
+def get_page_reviews_pro(url, route) :
+    page = requests.get(url)
+    soup = BeautifulSoup(page.text, 'html.parser')
+    elements = soup.select(route)
+    return  [get_review_pro(element, route)   for element in elements ] 
+
+
+
+#####실행코드
+
+#전문가 리뷰 추출 > 영화코드 입력
+movie_code = 161967
+review_pro_list=[]
+review_pro_list.extend(get_page_reviews_pro(f'https://movie.naver.com/movie/bi/mi/point.naver?code={movie_code}', 'div.reporter ul li'))
+review_pro_list.extend(get_page_reviews_pro(f'https://movie.naver.com/movie/bi/mi/point.naver?code={movie_code}', 'div.score_result ul li'))
+
+
+#데이터 프레임 저장 > 파일명 입력
+data = review_pro_list
+title = '네이버비평가.csv'
+df= pd.DataFrame(data)
+df.to_csv(title)
