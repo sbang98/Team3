@@ -1,0 +1,77 @@
+#평론가
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from bs4 import BeautifulSoup
+import time
+import pandas as pd
+
+location="https://www.rottentomatoes.com/m/parasite_2019/reviews"
+service= Service(executable_path="./chromedriver")
+driver= webdriver.Chrome(service=service)
+driver.get(location)
+
+review=[]
+rating=[]
+
+def get_Review(driver):
+    soup= BeautifulSoup(driver.page_source, 'html.parser')
+    rev_list= soup.select('div.review_table > div.row.review_table_row')
+    for rev in rev_list:
+        content= rev.select_one('div.review_area > div.review_desc > div.the_review').text
+        review.append(content)
+        score= rev.select_one('div.review_area > div.review_desc > div.small.subtle.review-link').text
+        rating.append(score)
+
+get_Review(driver)
+
+for k in range(9999999):
+    try:
+        driver.find_element(by=By.CSS_SELECTOR, value="button.js-prev-next-paging-next.btn.prev-next-paging__button.prev-next-paging__button-right").click()
+        time.sleep(2)
+        get_Review(driver)
+    except:
+        break;
+    
+df= pd.DataFrame({'review':review, 'rating':rating})
+df.to_csv('로튼토마토비평가리뷰평가.csv')
+
+#관객
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from bs4 import BeautifulSoup
+import time
+import pandas as pd
+
+location="https://www.rottentomatoes.com/m/parasite_2019/reviews?type=verified_audience"
+service= Service(executable_path="./chromedriver")
+driver= webdriver.Chrome(service=service)
+driver.get(location)
+
+review=[]
+#rating=[]
+
+def get_Review(driver):
+    soup= BeautifulSoup(driver.page_source, 'html.parser')
+    rev_list= soup.select('#movieUserReviewsContent > ul.audience-reviews > li')
+    for rev in rev_list:
+        content= rev.select_one('div.audience-reviews__review-wrap > p.audience-reviews__review.js-review-text.clamp.clamp-8.js-clamp').text
+        review.append(content)
+        #score= rev.select_one('div.audience-reviews__review-wrap > span.audience-reviews__score > span[data-qa="star-display"] > span')
+        #rating.append(score)
+
+get_Review(driver)
+
+for k in range(9999999):
+    try:
+        driver.find_element(by=By.CSS_SELECTOR, value="button.js-prev-next-paging-next.btn.prev-next-paging__button.prev-next-paging__button-right").click()
+        time.sleep(2)
+        get_Review(driver)
+    except:
+        break;
+    
+df= pd.DataFrame({'review':review})
+df.to_csv('로튼토마토관객리뷰.csv')

@@ -1,0 +1,40 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from bs4 import BeautifulSoup
+import time
+
+location="https://www.rottentomatoes.com/m/parasite_2019/reviews"
+service= Service(executable_path="./chromedriver")
+driver= webdriver.Chrome(service=service)
+driver.get(location)
+
+rot_list=[]
+
+def get_Review(box_list):
+    for box in box_list:
+        review= box.select_one('div.review_area > div.review_desc > div.the_review').text
+        try:
+            score= box.select_one('div.review_area > div.review_desc > div.small.subtle.review-link').text
+        except:
+            score="no score"
+        date= box.select_one('div.review_area > div.review-date.subtle.small').text
+        rot_list.append({review, score, date})
+        
+soup= BeautifulSoup(driver.page_source, 'html.parser')
+box_list= soup.select('div.review_table > div.row.review_table_row')
+get_Review(box_list)
+
+for k in range(99999):
+    try:
+        driver.find_element(by=By.CSS_SELECTOR, value="button.js-prev-next-paging-next.btn.prev-next-paging__button.prev-next-paging__button-right").click()
+        time.sleep(3)
+        soup= BeautifulSoup(driver.page_source, 'html.parser')
+        box_list= soup.select('div.review_table > div.row.review_table_row')
+        get_Review(box_list)
+    except Exception as ex:
+        print("끝")
+        break;
+        
+print(rot_list)

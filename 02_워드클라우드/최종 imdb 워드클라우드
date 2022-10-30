@@ -1,0 +1,55 @@
+#로튼 토마토도 동일한 방식으로 진행
+from nltk.corpus import stopwords
+import re
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+
+df= pd.read_csv('imdb기생충.csv')
+rev_list= df['reviews'].to_list()
+result=[]
+
+english_stops= set(stopwords.words('english'))
+R_patterns = [
+   (r'won\'t', 'will not'),
+   (r'can\'t', 'cannot'),
+   (r'i\'m', 'i am'),
+   (r'(\w+)\'ll', '\g<1> will'),
+   (r'(\w+)n\'t', '\g<1> not'),
+   (r'(\w+)\'ve', '\g<1> have'),
+   (r'(\w+)\'s', '\g<1> is'),
+   (r'(\w+)\'re', '\g<1> are'),
+]
+
+class REReplacer(object):
+    def __init__(self,pattern=R_patterns):
+        self.pattern= [(re.compile(regex),repl) for (regex,repl) in pattern]
+        
+    def replace(self,text):
+        s=text
+        for (pattern,repl) in self.pattern:
+            s=re.sub(pattern,repl,s)
+        return s
+    
+rep_word= REReplacer()
+
+for rev in rev_list:
+    rep_word.replace(rev)
+    new_rev= re.sub('[^a-zA-Z ]','',rev)
+    words= pos_tag(word_tokenize(new_rev))
+    for word,tag in words:
+        if tag in ['NN','NNS','NNP','NNPS'] and word not in english_stops and len(word)>1:
+            result.append(word)
+            
+from collections import Counter
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+c=Counter(result)
+cm = dict(c.most_common(40))
+[cm.pop(word) for word in ['movie','film','films','movies','Parasite']]
+print(cm)
+
+wc = WordCloud(font_path='malgun', width=400, height=400, scale=2.0, max_font_size=250)
+gen = wc.generate_from_frequencies(cm)
+plt.figure()
+plt.imshow(gen)

@@ -1,0 +1,42 @@
+import pandas as pd
+from konlpy.tag import Okt 
+from collections import Counter 
+from wordcloud import WordCloud,STOPWORDS
+import matplotlib.pyplot as plt 
+import matplotlib as mp
+
+df = pd.read_csv('theroundup_daum.csv', encoding = "cp949")
+
+script = df['review']
+script.to_csv('review.txt', encoding = 'utf-8-sig')
+
+text = open('review.txt', encoding='utf-8-sig').read()
+spwords=set(STOPWORDS
+
+def token_konlpy(text):
+    okt=Okt()
+    return [word for word in okt.nouns(text) if len(word)>1] 
+
+noun = token_konlpy(text)
+len(noun)
+
+noun_set = set(noun)
+len(noun_set)
+
+count = Counter(noun)
+word = dict(count.most_common(40))
+word
+
+[word.pop(key) for key in ['영화', '도시', '보고' ,'진짜', '정말', '역시', '그냥', '장면', '구씨', '편이', '사람', '정도', '편도', '하나', '평점', '오늘']]
+
+wc = WordCloud(max_font_size=200,
+    font_path = 'gabia_solmee.ttf',
+    background_color="white",
+    width=800, height=800).generate_from_frequencies(word) 
+    
+
+plt.figure(figsize = (40,40))
+plt.imshow(wc)
+plt.tight_layout(pad=0)
+plt.axis('off')
+plt.show()
