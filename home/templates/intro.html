@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+{% load static %}
+<!-- ##### Blog Wrapper Start ##### -->
+    <div class="blog-wrapper section-padding-100">
+        <div class="container">
+            <div class="row align-items-end">
+                <!-- Single Blog Area -->
+                <div class="col-12 col-lg-4">
+                    <div class="single-blog-area mb-100">
+                        <!-- Blog Content -->
+                        <div class="single-blog-content">
+                            <div class="line"></div>
+                            <a class="post-tag">2019년의 세계적인 히트작, 기생충</a>
+                            <a class="post-tag">그 이후 최초의 천만 영화, 범죄도시2</a>
+                            <a class="post-tag"><br></a>
+                            <h4><a class="post-headline">어떻게 흥행에 성공할 수 있었을까?</a></h4>
+                            <p>소셜 빅데이터를 분석해서 2019년도에 기생충이 세계적으로 성공한 이유와
+                                그 이후 최초의 천만관객을 돌파한 범죄도시2의 흥행요인을 분석해보자</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Blog Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-catagory-area mb-100">
+                        <img src="{% static 'assets/img/기생충 포스터.png' %}" alt="">
+                    </div>
+                </div>
+                <!-- Single Blog Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-catagory-area mb-100">
+                        <img src="{% static 'assets/img/범죄도시2 포스터.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- ======= Why Us Section ======= -->
+  <section id="why-us" class="why-us">
+    <div class="container">
+
+      <div class="row no-gutters">
+
+        <div class="col-lg-4 col-md-6 content-item">
+          <span>01</span>
+          <h4>웹 크롤링</h4>
+          <p>네이버, 다음 영화, IMDB, Rotten Tomatoes에서 Review&별점 수집 및 크롤링 모듈화 진행</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 content-item">
+          <span>02</span>
+          <h4>워드 클라우드</h4>
+          <p>텍스트 전처리 후, 빈도수 많은 단어를 통해 흥행 요인 키워드 추측 및 시각화</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 content-item">
+          <span>03</span>
+          <h4> 감성분석</h4>
+          <p>각 리뷰의 별점과 긍정어, 부정어 포함 정도에 따른 긍/부정 라벨링 & 예측모델 구현</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 content-item">
+          <span>04</span>
+          <h4>흥행요인분석</h4>
+          <p>워드 클라우드 결과와 감성분석을 토대로 도출된 흥행 키워드들에 대한 추가 분석</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 content-item">
+          <span>05</span>
+          <h4>유사한 영화 추천</h4>
+          <p>범죄도시2/기생충 흥행요인을 통한 줄거리 기반 코사인 유사도 영화 추천</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 content-item">
+            <span></span>
+            <h4></h4>
+            <p></p>
+          </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Why Us Section -->
+{% endblock %}

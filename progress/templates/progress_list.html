@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+{% load static %}
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <div class="logo"><span class="icon fa-gem"><i class="fa-regular fa-folder-open"></i></span></div>
+            <h2>데이터 분석 5 STEPS</h2>
+        </div>
+    </section>
+
+    <!-- Wrapper -->
+    <section id="wrapper">
+
+        <!-- One -->
+        <section id="one" class="wrapper spotlight style1">
+            <div class="inner">
+                <a href="{% url 'progress:step1' %}" class="image"><img src="{% static 'assets/img/imdb크롤링.jpeg' %}" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">STEP 1. 웹 크롤링</h2>
+                    <p>{{ post1.content }}</p><br>
+
+                   <a href="{% url 'progress:step1' %}">Learn more</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Two -->
+        <section id="two" class="wrapper alt spotlight style2">
+            <div class="inner">
+                <a href="{% url 'progress:step2' %}" class="image"><img src="{% static 'assets/img/네이버관객워드클라우드(2).jpeg' %}" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">STEP 2. 워드 클라우드</h2>
+                    <p>{{ post2.content }}</p><br>
+                    <a href="{% url 'progress:step2' %}" class="special">Learn more</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three -->
+        <section id="three" class="wrapper spotlight style3">
+            <div class="inner">
+                <a href="{% url 'progress:step3' %}" class="image"><img src="{% static 'assets/img/네이버관객감성머신러닝(1).jpeg' %}" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">STEP 3. 감성분석</h2>
+                    <p>{{ post3.content }}</p><br>
+                    <a href="{% url 'progress:step3' %}" class="special">Learn more</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Four -->
+        <section id="four" class="wrapper alt spotlight style4">
+            <div class="inner">
+                <a href="{% url 'progress:step4' %}" class="image"><img src="{% static 'assets/img/흥행요인분석.jpg' %}" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">STEP 4. 흥행요인분석</h2>
+                    <p>{{ post4.content }}</p><br>
+                    <a href="{% url 'progress:step4' %}" class="special">Learn more</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Five -->
+        <section id="five" class="wrapper spotlight style5">
+            <div class="inner">
+                <a href="{% url 'progress:step5' %}" class="image"><img src="{% static 'assets/img/유사도분석추천.jpg' %}" alt="" /></a>
+                <div class="content">
+                    <h2 class="major">STEP 5. 유사한 영화 추천</h2>
+                    <p>{{ post5.content }}</p><br>
+                    <a href="{% url 'progress:step5' %}" class="special">Learn more</a>
+                </div>
+            </div>
+        </section>
+
+    </section>
+</div>
+{% endblock %}

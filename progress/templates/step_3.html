@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+{% load static %}
+<div class="blog-wrapper section-padding-100">
+<div class="row mt-5">
+    <div class="col-12 text-center">
+      <h1><strong>Step3. 감성 분석</strong></h1>
+        {{ post.content }}
+    </div>
+  </div>
+    <br>
+    <br>
+    <br>
+<div id="wrapper">
+    <div id="main">
+            <article class="post">
+                <header>
+                    <div class="title text-center">
+                        <h3><strong>네이버 관객 라벨링</strong></h3>
+                    </div>
+                </header>
+                <img src="{% static 'assets/img/네이버관객감성라벨링(1).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(2).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(3).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(4).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(5).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(6).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(7).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(8).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(9).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(10).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성라벨링(11).jpeg' %}" alt=""><br>
+            </article>
+        <br>
+            <article class="post">
+                <header>
+                    <div class="title text-center">
+                        <h3><strong>다음 관객 라벨링</strong></h3>
+                    </div>
+                </header>
+                <img src="{% static 'assets/img/다음관객감성라벨링(1).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/다음관객감성라벨링(2).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/다음관객감성라벨링(3).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/다음관객감성라벨링(4).jpeg' %}" alt=""><br>
+            </article>
+        <br>
+            <article class="post">
+                <header>
+                    <div class="title text-center">
+                        <h3><strong>LSTM 모델</strong></h3>
+                    </div>
+                </header>
+                <img src="{% static 'assets/img/네이버관객감성머신러닝(1).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성머신러닝(2).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/네이버관객감성머신러닝(3).jpeg' %}" alt="">
+            </article>
+</div>
+</div>
+    <a href="{% url 'progress:progress_list' %}"><button class = "btn btn-primary">목록으로</button></a>
+</div>
+{% endblock %}

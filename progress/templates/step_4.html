@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+{% load static %}
+<div class="blog-wrapper section-padding-100">
+<div class="row mt-5">
+    <div class="col-12 text-center">
+      <h1><strong>Step4. 흥행요인 분석</strong></h1>
+        {{ post.content }}
+    </div>
+  </div>
+    <br>
+    <br>
+    <br>
+<div id="wrapper">
+    <div id="main">
+            <article class="post">
+                <header>
+                    <div class="title text-center">
+                        <h3><strong>흥행 요인 상세 분석</strong></h3>
+                    </div>
+                </header>
+                <img src="{% static 'assets/img/흥행요인분석(1).jpeg' %}" alt=""><br>
+              <img src="{% static 'assets/img/흥행요인분석(2).jpeg' %}" alt="">
+            </article>
+</div>
+</div>
+    <a href="{% url 'progress:progress_list' %}"><button class = "btn btn-primary">목록으로</button></a>
+</div>
+
+{% endblock %}

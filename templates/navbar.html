@@ -1,0 +1,24 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="{% url 'home:index' %}">WTD</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'home:index' %}">Home</a></li>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'home:intro' %}">Intro</a></li>
+                <li class="dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="{% url 'progress:progress_list' %}"><span>Progress</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="{% url 'progress:step1' %}">STEP 1. 웹 크롤링</a></li>
+                      <li><a href="{% url 'progress:step2' %}">STEP 2. 워드 클라우드</a></li>
+                      <li><a href="{% url 'progress:step3' %}">STEP 3. 감성분석</a></li>
+                      <li><a href="{% url 'progress:step4' %}">STEP 4. 흥행요인분석</a></li>
+                      <li><a href="{% url 'progress:step5' %}">STEP 5. 유사한 영화 추천</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'result:result_list' %}">Result</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
