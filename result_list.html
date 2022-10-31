@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+
+    <title>WTD</title>
+    <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="static/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1 class="site-heading text-center text-faded d-none d-lg-block">
+            <span class="site-heading-upper text-primary mb-3">WTD</span>
+            2019 vs 2022년 천만 영화 흥행 요인 분석
+        </h1>
+    </header>
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="home_index.html">WTD</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="home_index.html">Home</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="intro.html">Intro</a></li>
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="progress_list.html"><span>Progress</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="step_1.html">STEP 1. 웹 크롤링</a></li>
+                          <li><a href="step_2.html">STEP 2. 워드 클라우드</a></li>
+                          <li><a href="step_3.html">STEP 3. 감성분석</a></li>
+                          <li><a href="step_4.html">STEP 4. 흥행요인분석</a></li>
+                          <li><a href="step_5.html">STEP 5. 유사한 영화 추천</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="result_list.html">Result</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section-padding pb-0" id="timeline">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-center mb-lg-5 mb-4">Result</h1>
+                <div class="timeline">
+                    <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                        <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                            <h3 class=" text-light">웹 크롤링</h3>
+                            <p><a href="#open1">영화 리뷰 테이블 리스트</a></p>
+                            <div class="white_content" id="open1">
+                                <div>
+                                    <p>네이버 기생충 테이블 구조</p>
+                                    <img src="static/assets/img/네이버기생충크롤링.png" alt="">
+                                    <p>네이버 범죄도시2 테이블 구조</p>
+                                    <img src="static/assets/img/네이버범죄도시2크롤링.png" alt="">
+                                    <p>다음 기생충 테이블 구조</p>
+                                    <img src="static/assets/img/다음기생충크롤링.png" alt="">
+                                    <p>다음 범죄도시2 테이블 구조</p>
+                                    <img src="static/assets/img/다음범죄도시2크롤링.png" alt="">
+                                    <br>
+                                    <p class="close"><a href="#close">X</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                            <i class="fa-solid fa-network-wired timeline-icon fa-2x"></i>
+                        </div>
+                        <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                            <time>STEP 01</time>
+                        </div>
+                    </div>
+
+                    <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                        <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                            <h3 class=" text-light">워드 클라우드</h3>
+                            <p><a href="#open2">워드 클라우드 시각화</a></p>
+                            <div class="white_content" id="open2">
+                                <div>
+                                    <p>기생충 워드 클라우드</p>
+                                    <img src="static/assets/img/기생충워드클라우드.png" alt="">
+                                    <img src="static/assets/img/워드클라우드_imdb.png" alt="">
+                                    <img src="static/assets/img/워드클라우드_imdb_비평가.png" alt="">
+                                    <img src="static/assets/img/워드클라우드_로튼토마토_관객.png" alt="">
+                                    <img src="static/assets/img/워드클라우드_로튼토마토_비평가.png" alt="">
+                                    <p>범죄도시2 워드 클라우드</p>
+                                    <img src="static/assets/img/범죄도시2워드클라우드.png" alt="">
+                                    <br>
+                                    <p class="close"><a href="#close">X</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                            <i class="fa-solid fa-cloud timeline-icon fa-2x"></i>
+                        </div>
+                        <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                            <time>STEP 02</time>
+                        </div>
+                    </div>
+
+                    <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                        <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                            <h3 class=" text-light">감성분석</h3>
+                            <p><a href="#open3">리뷰의 긍부정 데이터 시각화 & 키워드 호감도</a></p>
+                            <div class="white_content" id="open3">
+                                <div>
+                                    <p>긍/부정 리뷰 분포도</p>
+                                    <img src="static/assets/img/범죄도시2감성분석.png" alt=""><br>
+                                    <p>리뷰 감성분석</p>
+                                    <img src="static/assets/img/긍부정리뷰1.png" alt=""><br>
+                                    <img src="static/assets/img/긍부정리뷰2.png" alt=""><br>
+                                    <img src="static/assets/img/긍부정리뷰3.png" alt=""><br>
+                                    <img src="static/assets/img/긍부정리뷰4.png" alt=""><br>
+                                    <p>흥행요인 키워드 호감도</p>
+                                    <img src="static/assets/img/마동석리뷰호감도.png" alt=""><br>
+                                    <img src="static/assets/img/손석구리뷰호감도.png" alt=""><br>
+                                    <img src="static/assets/img/액션범죄리뷰호감도.png" alt="">
+                                    <br>
+                                    <p class="close"><a href="#close">X</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                            <i class="fa-solid fa-magnifying-glass-chart timeline-icon fa-2x"></i>
+                        </div>
+                        <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                            <time>STEP 03</time>
+                        </div>
+                    </div>
+
+                    <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                        <div class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                            <h3 class=" text-light">흥행요인분석</h3>
+                            <p><a href="#open4">흥행 요인 분석 결과 시각화</a></p>
+                            <div class="white_content" id="open4">
+                                <div>
+                                    <p>감독별 데이터</p>
+                                    <img src="static/assets/img/top500감독별데이터.png" alt="">
+                                    <p>배우별 데이터</p>
+                                    <img src="static/assets/img/top500배우별데이터.png" alt="">
+                                    <p>연령 등급별 그래프</p>
+                                    <img src="static/assets/img/top500연령별그래프.png" alt="">
+                                    <p>장르별 그래프</p>
+                                    <img src="static/assets/img/top500장르그래프.png" alt="">
+                                    <br>
+                                    <p class="close"><a href="#close">X</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                            <i class="fa-regular fa-thumbs-up timeline-icon fa-2x"></i>
+                        </div>
+                        <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                            <time>STEP 04</time>
+                        </div>
+                    </div>
+
+                    <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes-last">
+                        <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                            <h3 class=" text-light">유사한 영화 추천</h3>
+                            <p><a href="#open5">코사인 유사도 기반, 영화 추천 리스트</a></p>
+                            <div class="white_content" id="open5">
+                                <div>
+                                    <p>유사한 영화 추천 리스트(기생충 / 범죄도시)</p>
+                                    <img src="static/assets/img/기생충영화추천.png" alt="">
+                                    <img src="static/assets/img/범죄도시2영화추천.png" alt="">
+                                    <br>
+                                    <p class="close"><a href="#close">X</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                            <i class="fa-solid fa-video timeline-icon fa-2x"></i>
+                        </div>
+                        <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                            <time>STEP 05</time>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer-->
+    <footer class="footer text-faded text-center py-5" id="footer">
+        <div class="container"><p class="m-0 small"><a href="#"> Copyright &copy; WTD; We're Trend Doker </a></p></div>
+        <p class="m-0 small"><a href="https://www.freepik.com/free-vector/modern-black-friday-background-with-vhs-effect-template_10308948.htm#query=movie&position=18&from_view=search&track=sph">Background image by BiZkettE1</a> on Freepik</p>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="static/js/scripts.js"></script>
+</body>
+</html>
